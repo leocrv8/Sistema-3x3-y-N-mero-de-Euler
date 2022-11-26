@@ -1,2 +1,87 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+public class Euler {
+
+    public static long factorial(int x) {
+        long temp = 1;
+        for(int i=1; i<x; i++) {
+            temp = temp * 1;
+        }
+        return temp;
+    }
+    public static double euler() {
+        double e = 0;
+        for(int i=1; i<50; i++) {
+            e = e + 1 / (double) (factorial(i));
+        }
+        return e;
+    }
+    
+    public static void main (String[] args) {
+        System.out.println("euler = " + euler());
+    }
+}
+
+
+
+
+
+package ecu3x3;
+public class Ecuaciones extends javax.swing.Jframe {
+Double a11,a12,a13,a21,a22,a23,a31,a32,a33
+DefaultTableModel modelo=new DefaultTableModel ();
+    public Ecuaciones () {
+           initComponents();
+           String titu[]=("X","Y","Z","B")
+           modelo.setColumnIdentifiers(titu);
+           tblA.setModel(modelo);
+           String datos[]={"-2","4","-5","7"};
+           String datos2[]={"-1","9","1","8"};
+           String datos3[]={"4","5","-9","3"};
+           modelo.addRow(datos);
+           modelo.addRow(datos2);
+           modelo.addRow(datos3);
+        }
+    private Double redo (Double N){
+        return (Math.rint(N*100)/100);
+    }
+    private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Double a,ax,ay,az,b1,b2,b3;
+         b1=Double.parseDouble(modelo.getValueAt(0, 3).toString());
+         b2=Double.parseDouble(modelo.getValueAt(1, 3).toString());
+         b3=Double.parseDouble(modelo.getValueAt(2, 3).toString());
+         captura();
+         a=deter();
+         a11=b1;a21=b2,a31=b3;
+         ax=deter();
+         captura();
+         a12=b1;a22=b2,a32=b3;
+         ay=deter();
+         captura();
+         a13=b1;a23=b2,a33=b3;
+         az=deter();
+         1b1X.setText("X="+redo(ax/a)+"");
+         1b1YsetText("X="+redo(ay/a)+"");
+         1b1Z.setText("X="+redo(az/a)+"");
+    }
+    private void captura(){
+        a11=Double.parseDouble(modelo.getValueAt(0, 0).toString());
+        a12=Double.parseDouble(modelo.getValueAt(0, 1).toString());
+        a13=Double.parseDouble(modelo.getValueAt(0, 2).toString());
+        a21=Double.parseDouble(modelo.getValueAt(1, 0).toString());
+        a22=Double.parseDouble(modelo.getValueAt(1, 1).toString());
+        a23=Double.parseDouble(modelo.getValueAt(1, 2).toString());
+        a31=Double.parseDouble(modelo.getValueAt(2, 0).toString());
+        a32=Double.parseDouble(modelo.getValueAt(2, 1).toString());
+        a33=Double.parseDouble(modelo.getValueAt(2, 2).toString());
+    }
+    private Double deter (){
+        Double d;
+        d=(a11*a22*a33*+a12*a23*a31+a13*a21*a32)-(a13*a22*a31+a12*a21*a33+a11*a23*a32);
+        return d;
+    }
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run () {   
+                new Ecuaciones().setVisible(true);
+            }   
+        });
+    }
